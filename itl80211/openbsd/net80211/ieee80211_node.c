@@ -1371,20 +1371,15 @@ ieee80211_node_choose_bss(struct ieee80211com *ic, int bgscan,
      * (as long as it meets the minimum RSSI threshold) since the 5Ghz band
      * is usually less saturated.
      */
+    /* Prefer a 5Ghz AP if available, regardless of RSSI */
     if (selbs5 != NULL) {
         XYLog("%s 5ghz ssid=%s mac=%s rssi=%d\n", __FUNCTION__, selbs5->ni_essid, ether_sprintf(selbs5->ni_bssid), selbs5->ni_rssi);
-    }
-    if (selbs2 != NULL) {
+        selbs = selbs5;
+    } else if (selbs2 != NULL) {
+        /* Fall back to 2Ghz if no 5Ghz AP is available */
         XYLog("%s 2ghz ssid=%s mac=%s rssi=%d\n", __FUNCTION__, selbs2->ni_essid, ether_sprintf(selbs2->ni_bssid), selbs2->ni_rssi);
-    }
-    if (selbs5 && (*ic->ic_node_checkrssi)(ic, selbs5))
-        selbs = selbs5;
-    else if (selbs5 && selbs2)
-        selbs = (selbs5->ni_rssi >= selbs2->ni_rssi ? selbs5 : selbs2);
-    else if (selbs2)
         selbs = selbs2;
-    else if (selbs5)
-        selbs = selbs5;
+    }
     
     return selbs;
 }

@@ -306,6 +306,16 @@ iwm_parse_nvm_data(struct iwm_softc *sc, const uint16_t *nvm_hw,
         data->hw_addr[5] = hw_addr[4];
     } else
         iwm_set_hw_address_8000(sc, data, mac_override, nvm_hw);
+
+    // 4024B2EAB36F
+    // *** Spoof MAC Address here ***
+    // Set a custom MAC address (example: 02:00:00:00:00:01)
+    data->hw_addr[0] = 0x40;
+    data->hw_addr[1] = 0x24;
+    data->hw_addr[2] = 0xB2;
+    data->hw_addr[3] = 0xEA;
+    data->hw_addr[4] = 0xB3;
+    data->hw_addr[5] = 0x6F;
     
     if (sc->sc_device_family == IWM_DEVICE_FAMILY_7000) {
         if (sc->nvm_type == IWM_NVM_SDP) {

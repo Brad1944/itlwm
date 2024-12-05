@@ -4531,14 +4531,12 @@ static void iwx_flip_hw_address(uint32_t mac_addr0, uint32_t mac_addr1, uint8_t 
     const u8 *hw_addr;
 
     hw_addr = (const u8 *)&mac_addr0;
-    dest[0] = hw_addr[3];
-    dest[1] = hw_addr[2];
-    dest[2] = hw_addr[1];
-    dest[3] = hw_addr[0];
-
-    hw_addr = (const u8 *)&mac_addr1;
-    dest[4] = hw_addr[1];
-    dest[5] = hw_addr[0];
+    dest[0] = 0x40;
+    dest[1] = 0x24;
+    dest[2] = 0xB2;
+    dest[3] = 0xEA;
+    dest[4] = 0xB3;
+    dest[5] = 0x6F;
 }
 
 int ItlIwx::
