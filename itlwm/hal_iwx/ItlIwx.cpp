@@ -4531,6 +4531,7 @@ static void iwx_flip_hw_address(uint32_t mac_addr0, uint32_t mac_addr1, uint8_t 
     const u8 *hw_addr;
 
     // 2 Available MAC to use (for free wifi)
+    // 4024B2F4CF07
     // 4024B2EAB36F
     // 4024B2E4BF08
 
@@ -4538,9 +4539,9 @@ static void iwx_flip_hw_address(uint32_t mac_addr0, uint32_t mac_addr1, uint8_t 
     dest[0] = 0x40;
     dest[1] = 0x24;
     dest[2] = 0xB2;
-    dest[3] = 0xE4;
-    dest[4] = 0xBF;
-    dest[5] = 0x08;
+    dest[3] = 0xF4;
+    dest[4] = 0xCF;
+    dest[5] = 0x07;
 }
 
 int ItlIwx::
