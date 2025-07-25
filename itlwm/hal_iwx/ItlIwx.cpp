@@ -4538,9 +4538,9 @@ static void iwx_flip_hw_address(uint32_t mac_addr0, uint32_t mac_addr1, uint8_t 
     dest[0] = 0x40;
     dest[1] = 0x24;
     dest[2] = 0xB2;
-    dest[3] = 0xEA;
-    dest[4] = 0xB3;
-    dest[5] = 0x6F;
+    dest[3] = 0xF4;
+    dest[4] = 0xCF;
+    dest[5] = 0x07;
 }
 
 int ItlIwx::
